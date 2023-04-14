@@ -249,7 +249,11 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_ HINSTANCE hPrevInstance, _
 	list.emplace_back(std::make_unique<Enemy>(100.0f, 100.0f));
 	while (!ProcessMessage())
 	{
+		// 更新
 		std::for_each(list.begin(), list.end(), [&list](std::unique_ptr<Character>& c) {c->Update(list); });
+
+		// チェック
+
 		SetDrawScreen(DX_SCREEN_BACK);
 		ClsDrawScreen();
 		std::for_each(list.begin(), list.end(), [&list](std::unique_ptr<Character>& c) {c->Draw(); });
